@@ -58,6 +58,17 @@ def clickPoint(x, y):
 def clickArea(x1, y1, x2, y2):
     clickAreaPx(clickeroo.percentToMouseX(x1), clickeroo.percentToMouseY(y1), clickeroo.percentToMouseX(x2), clickeroo.percentToMouseY(y2))
 
+def widgetExists(name):
+    return clickeroo.widgetExists(name)
+
+def moveToWidget(name):
+    if(widgetExists(name)):
+        moveToPx(clickeroo.widgetCenterX(name), clickeroo.widgetCenterY(name))
+
+def clickWidget(name):
+    if(widgetExists(name)):
+        clickPointPx(clickeroo.widgetCenterX(name), clickeroo.widgetCenterY(name))
+
 def sleep(sec):
     total = 0
     part = sec / 10.0

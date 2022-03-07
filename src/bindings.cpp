@@ -68,6 +68,40 @@ PYBIND11_EMBEDDED_MODULE(clickeroo, m) {
         QApplication::processEvents();
     });
 
+    m.def("widgetExists", [](const std::string name) {
+        const QString n = QString::fromStdString(name);
+        auto widgets = QApplication::allWidgets();
+        for(auto widget : widgets) {
+            if(widget->objectName() == n) {
+                return true;
+            }
+        }
+        return false;
+    });
+
+    m.def("widgetCenterX", [](const std::string name) {
+        const QString n = QString::fromStdString(name);
+        auto widgets = QApplication::allWidgets();
+        for(auto widget : widgets) {
+            if(widget->objectName() == n) {
+                const auto dpiScale = widget->devicePixelRatioF();
+                return widget->mapToGlobal(widget->rect().center()).x() * dpiScale;
+            }
+        }
+        return 0.0;
+    });
+    m.def("widgetCenterY", [](const std::string name) {
+        const QString n = QString::fromStdString(name);
+        auto widgets = QApplication::allWidgets();
+        for(auto widget : widgets) {
+            if(widget->objectName() == n) {
+                const auto dpiScale = widget->devicePixelRatioF();
+                return widget->mapToGlobal(widget->rect().center()).y() * dpiScale;
+            }
+        }
+        return 0.0;
+    });
+
     m.def("processEvents", []() {
         QApplication::processEvents();
     });

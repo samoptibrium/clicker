@@ -29,6 +29,9 @@ public:
 
         ui->setupUi(q);
 
+        ui->startStopButton->setObjectName("startStopButton");
+        ui->clearLogButton->setObjectName("clearLogButton");
+
         ui->sceneView->setScene(scene);
 
         q->connect(ui->startStopButton, &QPushButton::pressed, [this]() {
