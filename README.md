@@ -1,0 +1,1 @@
+Clickeroo is a helper tool for clicking things. Closed source, do not distribute.
