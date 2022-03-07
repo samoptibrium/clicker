@@ -1,9 +1,20 @@
 import clickeroo # The embedded clickeroo bindings module
+import inspect
 import pyautogui # pip install pyautogui
 import pyttsx3 # pip install pyttsx3
 import random
 import time
 import winsound
+
+def dump_args(func):
+    def wrapper(*args, **kwargs):
+        func_args = inspect.signature(func).bind(*args, **kwargs).arguments
+        func_args_str = ", ".join(map("{0[0]} = {0[1]!r}".format, func_args.items()))
+        what = f"{func.__module__}.{func.__qualname__} ( {func_args_str} )"
+        clickeroo.log(what)
+        processEvents()
+        return func(*args, **kwargs)
+    return wrapper
 
 def processEvents():
     clickeroo.processEvents()
@@ -41,34 +52,43 @@ def moveToPx(x, y):
     pyautogui.moveTo(x, y, duration=getDuration(x, y), tween=getTween())
     processEvents()
 
+@dump_args
 def clickPointPx(x, y):
     pyautogui.click(x, y, duration=getDuration(x, y), tween=getTween())
     processEvents()
 
+@dump_args
 def clickAreaPx(x1, y1, x2, y2):
     pyautogui.click(x1, y2, duration=getDuration(x1, y1), tween=getTween())
     processEvents()
     
+@dump_args
 def moveTo(x, y):
     moveToPx(clickeroo.percentToMouseX(x), clickeroo.percentToMouseY(y))
 
+@dump_args
 def clickPoint(x, y):
     clickPointPx(clickeroo.percentToMouseX(x), clickeroo.percentToMouseY(y))
 
+@dump_args
 def clickArea(x1, y1, x2, y2):
     clickAreaPx(clickeroo.percentToMouseX(x1), clickeroo.percentToMouseY(y1), clickeroo.percentToMouseX(x2), clickeroo.percentToMouseY(y2))
 
+@dump_args
 def widgetExists(name):
     return clickeroo.widgetExists(name)
 
+@dump_args
 def moveToWidget(name):
     if(widgetExists(name)):
         moveToPx(clickeroo.widgetCenterX(name), clickeroo.widgetCenterY(name))
 
+@dump_args
 def clickWidget(name):
     if(widgetExists(name)):
         clickPointPx(clickeroo.widgetCenterX(name), clickeroo.widgetCenterY(name))
 
+@dump_args
 def sleep(sec):
     total = 0
     part = sec / 10.0
@@ -77,13 +97,16 @@ def sleep(sec):
         time.sleep(part)
         processEvents()
 
+@dump_args
 def testArea(x1, y1, x2, y2, r, g, b, diff):
     return clickeroo.testArea(x1, y1, x2, y2, r, g, b, diff)
 
+@dump_args
 def errorBeep(frequency = 500, duration = 1000):
     winsound.Beep(frequency, duration)
     processEvents()
 
+@dump_args
 def speak(what):
     engine = pyttsx3.init()
     engine.say(what)
