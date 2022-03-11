@@ -23,10 +23,10 @@ Run the clicker application and press the "Start" button to run the selected scr
 
 # Screenshots
 
-[screenshot](TODO)
+![clicker screenshot](screenshots/clicker.gif)
 
 # Notes
 
  * I'm not planning to work on this further. It would eventually end up looking like some existing macro software like [AutoIt](https://www.autoitscript.com/site/)/[AutoHotKey](https://www.autohotkey.com/) or automated GUI testing tools like [Squish](https://www.froglogic.com/squish/editions/qt-gui-test-automation/).
- * 
+ * Uses pyautogui, pyttsx3 and the [pybind11](https://github.com/pybind/pybind11) libraries.
  
