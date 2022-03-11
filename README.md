@@ -30,5 +30,5 @@ Depending on the script, this will usually perform some simple actions like movi
 # Notes
 
  * I'm not planning to work on this further. It would eventually end up looking like some existing macro software like [AutoIt](https://www.autoitscript.com/site/)/[AutoHotKey](https://www.autohotkey.com/) or automated GUI testing tools like [Squish](https://www.froglogic.com/squish/editions/qt-gui-test-automation/).
- * Uses pyautogui, pyttsx3 and the [pybind11](https://github.com/pybind/pybind11) libraries.
+ * Uses pyautogui, pyttsx3, [QHotkey](https://github.com/Skycoder42/QHotkey) and [pybind11](https://github.com/pybind/pybind11) libraries.
  
