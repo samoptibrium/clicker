@@ -1,12 +1,12 @@
 # Clickeroo
 
-Clickeroo is a helpful tool for clicking things.
+Clickeroo is a tool for clicking things.
 
 I adapted this from some existing code I had lying around for the Optibrium March 2022 Hackathon.
 
 # Building
 
-Install Python 3.10+ and edit clickeroo.pro to point to it in LIBS, INCLUDEPATH and DEPENDPATH.
+Install Python 3.10+ and edit clickeroo.pro, adding the path to Python to LIBS, INCLUDEPATH and DEPENDPATH.
 
 Install the pip packages:
 
@@ -15,11 +15,13 @@ pyautogui # pip install pyautogui
 pyttsx3 # pip install pyttsx3
 ```
 
-Then simply open and run the project in Qt Creator.
+Then open and run the project in Qt Creator.
 
 # Usage
 
-Run the clicker application and press the "Start" button to run the selected script. Depending on the script, this will usually perform some simple actions like moving the mouse and then stop.
+Run the clicker application and press the "Start" button to run the selected script shown in the script editor panel.
+
+Depending on the script, this will usually perform some simple actions like moving the mouse and then stop.
 
 # Screenshots
 
