@@ -31,7 +31,7 @@ def getDuration(x,y):
 ## TODO helpers to draw status/task strings to the graphics scene e.g. what am i doing now/next
 
 def inRect(px, py, x1, y1, x2, y2):
-    return px >= x1 and px <= x2 and py >= y1 and py <= y2
+    return x1 <= px <= x2 and y1 <= py <= y2
 
 def moveOutsideRect(x1, y1, x2, y2):
     r = random.randint(0,3)
@@ -80,12 +80,12 @@ def widgetExists(name):
 
 @dump_args
 def moveToWidget(name):
-    if(widgetExists(name)):
+    if widgetExists(name):
         moveToPx(clickeroo.widgetCenterX(name), clickeroo.widgetCenterY(name))
 
 @dump_args
 def clickWidget(name):
-    if(widgetExists(name)):
+    if widgetExists(name):
         clickPointPx(clickeroo.widgetCenterX(name), clickeroo.widgetCenterY(name))
 
 @dump_args
